@@ -25,7 +25,7 @@ function computeBrackets(arr) {
         }
         if (arr[i] === ')') {
             indexOfSecondBrace = i;
-            let exprInBrackets = arr.slice(indexOfFirstBrace + 1, indexOfSecondBrace).join(' ').trim().split(' ');
+            let exprInBrackets = arr.slice(indexOfFirstBrace + 1, indexOfSecondBrace).join(' ').trim.split(' ');
             computeOperators(exprInBrackets, /[*\/]/);
             computeOperators(exprInBrackets, /[+-]/);
             arr.splice(indexOfFirstBrace,
