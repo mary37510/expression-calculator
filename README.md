@@ -7,12 +7,12 @@ Write your solution in `src/index.js`
 
 ---
 
-**Do not use `Function constructor` and `eval`**   
+**Do not use `Function constructor` and `eval`**   space
 
-**Input:** String, that contain `(`, `)`, `+`, `-`, `*`, `/` and `space`. Brackets can have **any nasting depth**   
+**Input:** String, that contain `(`, `)`, `+`, `-`, `*`, `/` and ``. Brackets can have **any nasting depth**   
 **Output:** Value of expression (Number)
 
----
+--- 
 
 ## Prepare and test
 
