@@ -4,7 +4,12 @@
 } */
 
 function expressionCalculator(expr) {
-    let arr = expr.split('');
+    let arr;
+    if (expr.includes(' ')) {
+        arr = expr.trim().split(' ');
+    } else {
+        arr = expr.trim().split('');
+    }
     computeBrackets(arr);
     computeOperators(arr, /[*\/]/);
     computeOperators(arr, /[+-]/);
@@ -20,13 +25,15 @@ function computeBrackets(arr) {
         }
         if (arr[i] === ')') {
             indexOfSecondBrace = i;
-            let exprInBrackets = arr.slice(indexOfFirstBrace + 1, indexOfSecondBrace);
-                computeOperators(exprInBrackets, /[*\/]/);
-                computeOperators(exprInBrackets, /[+-]/);
+            let exprInBrackets = arr.slice(indexOfFirstBrace + 1, indexOfSecondBrace).join(' ').trim().split(' ');
+            computeOperators(exprInBrackets, /[*\/]/);
+            computeOperators(exprInBrackets, /[+-]/);
             arr.splice(indexOfFirstBrace,
                 indexOfSecondBrace - indexOfFirstBrace + 1,
                 Number(exprInBrackets));
-        }
+        }  else if ((arr[i] === ')') === undefined) {
+            throw new Error('ExpressionError: Brackets must be paired');
+        } 
     }
     return arr;
 }
@@ -55,13 +62,15 @@ function calculate(a, b, operator) {
         return aNum * bNum;
     }
     if (operator === '/') {
-        return aNum / bNum;
+        if (bNum === 0) {
+            throw new TypeError("TypeError: Division by zero.");
+        } else {
+          return aNum / bNum;  
+        }
+        
     }
 }
 
-
-
- module.exports = {
+  module.exports = {
     expressionCalculator
-};
-  
+};  
